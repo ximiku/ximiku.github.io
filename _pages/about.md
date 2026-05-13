@@ -5,7 +5,7 @@ permalink: /
 subtitle: Bioinformatics · Biomedical AI · Protein Language Models
 
 profile:
-  align: left
+  align: right
   image: jiaxi-liu.png
   image_circular: true
   more_info: >
@@ -31,38 +31,26 @@ I am an undergraduate student in **Bioinformatics** at the School of Life Scienc
 
 I have been involved in research projects on protein large language models, edge-side inference optimization for complex-valued large models, assisted reproduction genetics, and cancer gene expression analysis platforms. Some links and publication artifacts are still placeholders and can be replaced when available.
 
-<div class="research-grid">
-  {% for item in site.data.research %}
-    <article class="research-card">
-      <h3>{{ item.title }}</h3>
-      <p>{{ item.description }}</p>
-    </article>
-  {% endfor %}
-</div>
+## research interests
 
-<h2 id="education">education</h2>
-<div class="compact-timeline">
-  {% for item in site.data.education %}
-    <article>
-      <time>{{ item.period }}</time>
-      <div>
-        <h3>{{ item.degree }}</h3>
-        <p>{{ item.institution }}</p>
-        {% if item.detail %}<p class="muted">{{ item.detail }}</p>{% endif %}
-      </div>
-    </article>
-  {% endfor %}
-</div>
+- **Protein language models:** protein design, function description, supervised fine-tuning, and continued pretraining.
+- **Biomedical genomics:** multi-source clinical and genomic data integration for assisted reproduction and cancer biology.
+- **Efficient AI systems:** edge-side inference systems and operator optimization for complex-valued large models.
 
-<h2 id="talks">talks & slides</h2>
-{% include talks.liquid %}
+## education
 
-<h2 id="achievements">achievements</h2>
-<div class="achievement-list">
-  {% for item in site.data.achievements %}
-    <article>
-      <span>{{ item.year }}</span>
-      <p>{{ item.title }}</p>
-    </article>
-  {% endfor %}
-</div>
+- **B.Sc. in Bioinformatics**, School of Life Sciences, Peking University, 2024 - Present.
+- Class monitor of the 2024 Bioinformatics cohort.
+- Comprehensive ranking 1/127 in the School of Life Sciences cohort.
+
+## selected experience
+
+- **Yang Lab, School of Computer Science, Peking University**, 2026.04 - Present. Edge-side inference system development for complex-valued large models.
+- **Yang Lab, School of Computer Science, Peking University**, 2025.12 - Present. Protein large language model development.
+- **Liu Yungang Lab, School of Life Sciences, Peking University**, 2025.10 - Present. Genetic effect localization and clinical-feature analysis across the assisted reproduction cycle.
+- **Liu Xiaoyun Group, School of Life Sciences, Peking University**, 2024.10 - 2025.05. GEPIA3 cancer gene expression and interaction analysis platform update.
+
+## awards
+
+- **Second Prize**, Peking University 34th Challenge Cup, 2025.
+- **Comprehensive Ranking 1/127**, School of Life Sciences, Peking University, 2026.

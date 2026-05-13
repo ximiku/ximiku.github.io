@@ -2,31 +2,64 @@
 layout: default
 ---
 
-<div class="jiaxi-home">
-  <aside class="jiaxi-profile" aria-label="Profile">
-    {% if page.profile.image %}
-      <img
-        class="jiaxi-avatar {% if page.profile.image_circular %}is-circular{% endif %}"
-        src="{{ page.profile.image | prepend: '/assets/img/' | relative_url }}"
-        alt="{{ site.first_name }} {{ site.last_name }} portrait"
-      >
-    {% endif %}
-
-    <p class="jiaxi-role">{{ page.subtitle }}</p>
-    <h1>
-      <span class="font-weight-bold">{{ site.first_name }}</span>
-      {% if site.middle_name %}{{ site.middle_name }}{% endif %}
-      {{ site.last_name }}
+<div class="post">
+  <header class="post-header">
+    <h1 class="post-title">
+      {% if site.title == 'blank' %}
+        <span class="font-weight-bold">{{ site.first_name }}</span>
+        {% if site.middle_name %}{{ site.middle_name }}{% endif %}
+        {{ site.last_name }}
+      {% else %}
+        {{ site.title }}
+      {% endif %}
     </h1>
+    <p class="desc">{{ page.subtitle }}</p>
+  </header>
 
-    {% if page.profile.more_info %}
-      <div class="jiaxi-more-info">{{ page.profile.more_info }}</div>
+  <article>
+    {% if page.profile %}
+      <div class="profile float-{% if page.profile.align == 'left' %}left{% else %}right{% endif %}">
+        {% if page.profile.image %}
+          {% assign profile_image_path = page.profile.image | prepend: 'assets/img/' %}
+          {% if page.profile.image_circular %}
+            {% assign profile_image_class = 'img-fluid z-depth-1 rounded-circle' %}
+          {% else %}
+            {% assign profile_image_class = 'img-fluid z-depth-1 rounded' %}
+          {% endif %}
+          {% capture sizes %}(min-width: {{ site.max_width }}) {{ site.max_width | minus: 30 | times: 0.3 }}px, (min-width: 576px) 30vw, 95vw"{% endcapture %}
+          {%
+            include figure.liquid loading="eager" path=profile_image_path class=profile_image_class sizes=sizes alt=page.profile.image
+            cache_bust=true
+          %}
+        {% endif %}
+        {% if page.profile.more_info %}
+          <div class="more-info">{{ page.profile.more_info }}</div>
+        {% endif %}
+      </div>
     {% endif %}
 
-    <div class="jiaxi-profile-actions">
-      <a class="btn btn-sm z-depth-0" href="{{ site.data.socials.cv_pdf | relative_url }}">CV</a>
-      <a class="btn btn-sm z-depth-0" href="mailto:{{ site.data.socials.email }}">Email</a>
-    </div>
+    <div class="clearfix">{{ content }}</div>
+
+    {% if page.announcements and page.announcements.enabled %}
+      <h2>
+        <a href="{{ '/news/' | relative_url }}" style="color: inherit">news</a>
+      </h2>
+      {% include news.liquid limit=true %}
+    {% endif %}
+
+    {% if page.latest_posts and page.latest_posts.enabled %}
+      <h2>
+        <a href="{{ '/blog/' | relative_url }}" style="color: inherit">latest posts</a>
+      </h2>
+      {% include latest_posts.liquid %}
+    {% endif %}
+
+    {% if page.selected_papers %}
+      <h2>
+        <a href="{{ '/publications/' | relative_url }}" style="color: inherit">selected publications</a>
+      </h2>
+      {% include selected_papers.liquid %}
+    {% endif %}
 
     {% if page.social %}
       <div class="social">
@@ -34,45 +67,9 @@ layout: default
         <div class="contact-note">{{ site.contact_note }}</div>
       </div>
     {% endif %}
-  </aside>
 
-  <main class="jiaxi-main">
-    <article>
-      <section class="jiaxi-section" id="about">
-        <h2>about</h2>
-        <div class="clearfix">{{ content }}</div>
-      </section>
-
-      {% if page.announcements and page.announcements.enabled %}
-        <section class="jiaxi-section" id="news">
-          <h2>
-            <a href="{{ '/news/' | relative_url }}" style="color: inherit">news</a>
-          </h2>
-          {% include news.liquid limit=true %}
-        </section>
-      {% endif %}
-
-      {% if page.selected_papers %}
-        <section class="jiaxi-section" id="publications">
-          <h2>
-            <a href="{{ '/publications/' | relative_url }}" style="color: inherit">selected publications</a>
-          </h2>
-          {% include selected_papers.liquid %}
-        </section>
-      {% endif %}
-
-      {% if page.latest_posts and page.latest_posts.enabled %}
-        <section class="jiaxi-section" id="latest-posts">
-          <h2>
-            <a href="{{ '/blog/' | relative_url }}" style="color: inherit">latest posts</a>
-          </h2>
-          {% include latest_posts.liquid %}
-        </section>
-      {% endif %}
-
-      {% if site.newsletter and site.newsletter.enabled and site.footer_fixed %}
-        {% include newsletter.liquid center=true %}
-      {% endif %}
-    </article>
-  </main>
+    {% if site.newsletter and site.newsletter.enabled and site.footer_fixed %}
+      {% include newsletter.liquid center=true %}
+    {% endif %}
+  </article>
 </div>
