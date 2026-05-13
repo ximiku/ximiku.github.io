@@ -1,0 +1,24 @@
+<div class="talk-grid">
+  {% for talk in site.data.talks %}
+    <article class="talk-card">
+      <a class="talk-media" href="{{ talk.slides | prepend: '/assets/pdf/' | relative_url }}" aria-label="{{ talk.title }} slides">
+        <img src="{{ talk.image | prepend: '/assets/img/' | relative_url }}" alt="{{ talk.title }} preview">
+      </a>
+      <div class="talk-body">
+        <p class="talk-meta">{{ talk.date }} &middot; {{ talk.location }}</p>
+        <h3>{{ talk.title }}</h3>
+        <p class="muted">{{ talk.event }}</p>
+        <p>{{ talk.description }}</p>
+        <div class="tag-row">
+          {% for tag in talk.tags %}
+            <span>{{ tag }}</span>
+          {% endfor %}
+        </div>
+        <div class="talk-actions">
+          <a href="{{ talk.slides | prepend: '/assets/pdf/' | relative_url }}">Slides</a>
+          {% if talk.video %}<a href="{{ talk.video }}">Video</a>{% endif %}
+        </div>
+      </div>
+    </article>
+  {% endfor %}
+</div>

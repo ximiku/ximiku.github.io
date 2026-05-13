@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 500">
+  <rect width="800" height="500" fill="#f8f6f1"/>
+  <rect x="70" y="70" width="660" height="360" rx="18" fill="#fff" stroke="#dfe5df" stroke-width="4"/>
+  <g fill="#dce9e5" stroke="#2f6f61" stroke-width="8">
+    <rect x="142" y="138" width="120" height="84" rx="10"/>
+    <rect x="340" y="138" width="120" height="84" rx="10"/>
+    <rect x="538" y="138" width="120" height="84" rx="10"/>
+    <rect x="241" y="280" width="120" height="84" rx="10"/>
+    <rect x="439" y="280" width="120" height="84" rx="10"/>
+  </g>
+  <path d="M262 180h78M460 180h78M202 222l99 58M598 222l-99 58M361 322h78" fill="none" stroke="#a87c2a" stroke-width="10" stroke-linecap="round"/>
+  <text x="400" y="416" text-anchor="middle" font-family="Inter, Arial, sans-serif" font-size="30" font-weight="700" fill="#202124">Data-Centric Evaluation</text>
+</svg>

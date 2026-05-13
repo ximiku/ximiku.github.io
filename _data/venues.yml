@@ -7,3 +7,13 @@
 
 "Vision":
   color: "#009f36"
+
+"NAR":
+  url: https://academic.oup.com/nar
+  color: "#2f6f61"
+
+"Systems":
+  color: "#6b7280"
+
+"Award":
+  color: "#a87c2a"

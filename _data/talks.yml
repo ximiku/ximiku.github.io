@@ -1,0 +1,22 @@
+- title: "Edge-Side Inference for Complex-Valued Large Models"
+  event: "Research project presentation, Yang Lab"
+  date: "2026"
+  location: "Peking University"
+  image: "talks/reliable-ai.svg"
+  slides: "slides/reliable-ai.pdf"
+  video:
+  description: "A placeholder talk entry based on current work on llama.cpp/ggml-based inference and IFAIRY64 vecdot operator optimization."
+  tags:
+    - Efficient Inference
+    - Large Models
+- title: "Protein Language Models for Design and Function Description"
+  event: "Research project presentation, Yang Lab"
+  date: "2025"
+  location: "Peking University"
+  image: "talks/data-centric.svg"
+  slides: "slides/data-centric.pdf"
+  video:
+  description: "A placeholder slides entry based on work on post-training, continued pretraining, and SFT for protein large language models."
+  tags:
+    - Protein LLM
+    - Bioinformatics
