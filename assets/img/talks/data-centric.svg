@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 450">
+  <rect width="800" height="450" fill="#f8f6f1"/>
+  <rect x="64" y="52" width="672" height="346" rx="16" fill="#fff" stroke="#dfe5df" stroke-width="4"/>
+  <text x="112" y="130" font-family="Inter, Arial, sans-serif" font-size="34" font-weight="700" fill="#202124">Data Quality</text>
+  <g fill="#dce9e5" stroke="#2f6f61" stroke-width="6">
+    <rect x="126" y="178" width="122" height="76" rx="8"/>
+    <rect x="338" y="178" width="122" height="76" rx="8"/>
+    <rect x="550" y="178" width="122" height="76" rx="8"/>
+  </g>
+  <path d="M248 216h90M460 216h90M187 254l212 58 212-58" fill="none" stroke="#a87c2a" stroke-width="8" stroke-linecap="round"/>
+  <rect x="310" y="312" width="180" height="46" rx="23" fill="#2f6f61"/>
+  <text x="400" y="343" text-anchor="middle" font-family="Inter, Arial, sans-serif" font-size="21" font-weight="700" fill="#fff">Evaluation</text>
+</svg>

@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 500">
+  <rect width="800" height="500" fill="#f8f6f1"/>
+  <rect x="60" y="60" width="680" height="380" rx="18" fill="#fff" stroke="#dfe5df" stroke-width="4"/>
+  <circle cx="220" cy="250" r="92" fill="#dce9e5"/>
+  <circle cx="400" cy="172" r="72" fill="#f0dfb7"/>
+  <circle cx="555" cy="276" r="98" fill="#cde0db"/>
+  <path d="M220 250l180-78 155 104M400 172v150M220 250l180 72" fill="none" stroke="#2f6f61" stroke-width="12" stroke-linecap="round"/>
+  <circle cx="220" cy="250" r="18" fill="#204d45"/>
+  <circle cx="400" cy="172" r="18" fill="#204d45"/>
+  <circle cx="555" cy="276" r="18" fill="#204d45"/>
+  <circle cx="400" cy="322" r="18" fill="#204d45"/>
+  <text x="400" y="420" text-anchor="middle" font-family="Inter, Arial, sans-serif" font-size="30" font-weight="700" fill="#202124">Reliable AI Systems</text>
+</svg>
