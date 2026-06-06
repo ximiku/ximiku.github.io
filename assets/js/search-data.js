@@ -10,33 +10,20 @@ ninja.data = [{
       window.location.href = "/";
     },
   },{id: "nav-publications",
-          title: "publications",
-          description: "selected research outputs and project manuscripts.",
+          title: "Publications",
+          description: "Selected research outputs and project manuscripts.",
           section: "Navigation",
           handler: () => {
             window.location.href = "/publications/";
           },
-        },{id: "nav-news",
-          title: "news",
-          description: "",
+        },{id: "nav-materials",
+          title: "Materials",
+          description: "Slides, course reports, and project materials.",
           section: "Navigation",
           handler: () => {
-            window.location.href = "/news/";
+            window.location.href = "/materials/";
           },
-        },{id: "nav-cv",
-          title: "CV",
-          description: "A structured web CV with a downloadable PDF version.",
-          section: "Navigation",
-          handler: () => {
-            window.location.href = "/cv/";
-          },
-        },{id: "news-won-second-prize-in-the-peking-university-34th-challenge-cup-for-a-project-on-genetic-effect-localization-across-the-assisted-reproduction-cycle",
-          title: 'Won Second Prize in the Peking University 34th Challenge Cup for a project...',
-          description: "",
-          section: "News",},{id: "news-started-work-in-yang-lab-on-edge-side-inference-systems-for-complex-valued-large-models-including-x86-ifairy64-vecdot-operator-optimization",
-          title: 'Started work in Yang Lab on edge-side inference systems for complex-valued large models,...',
-          description: "",
-          section: "News",},{
+        },{
         id: 'social-cv',
         title: 'CV',
         section: 'Socials',
@@ -62,7 +49,7 @@ ninja.data = [{
         title: 'Google Scholar',
         section: 'Socials',
         handler: () => {
-          window.open("https://scholar.google.com/citations?user=", "_blank");
+          window.open("https://scholar.google.com/citations?user=1lMSa7AAAAAJ", "_blank");
         },
       },{
       id: 'light-theme',
