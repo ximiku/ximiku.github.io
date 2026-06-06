@@ -3,7 +3,7 @@ document.addEventListener("readystatechange", () => {
   if (document.readyState === "interactive") {
     let isMac = navigator.platform.toUpperCase().indexOf("MAC") >= 0;
     let shortcutKeyElement = document.querySelector("#search-toggle .nav-link");
-    if (shortcutKeyElement && isMac) {
+    if (shortcutKeyElement && isMac && shortcutKeyElement.textContent.trim().length > 0) {
       // use the unicode for command key
       shortcutKeyElement.innerHTML = '&#x2318; k <i class="fa-solid fa-magnifying-glass"></i>';
     }

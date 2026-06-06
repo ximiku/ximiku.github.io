@@ -1,0 +1,146 @@
+{% assign profile_links = site.data.profile_links %}
+
+{% if profile_links %}
+  <nav class="profile-links" aria-label="Profile links">
+    {% assign has_icon_links = false %}
+    {% for link in profile_links.icon_links %}
+      {% if link.enabled != false and link.url and link.url != '' %}
+        {% assign has_icon_links = true %}
+      {% endif %}
+    {% endfor %}
+
+    {% if has_icon_links %}
+      <div class="profile-link-icons">
+        {% for link in profile_links.icon_links %}
+          {% if link.enabled != false and link.url and link.url != '' %}
+            {% assign is_external = false %}
+            {% if link.url contains '://' %}
+              {% assign is_external = true %}
+            {% endif %}
+            <a
+              class="profile-link-icon"
+              href="{% if is_external or link.url contains 'mailto:' %}{{ link.url }}{% else %}{{ link.url | relative_url }}{% endif %}"
+              aria-label="{{ link.label }}"
+              title="{{ link.label }}"
+              {% if is_external %}
+                target="_blank" rel="external nofollow noopener"
+              {% endif %}
+            >
+              {% if link.icon_text %}
+                <span class="profile-link-text-icon" aria-hidden="true">{{ link.icon_text }}</span>
+              {% else %}
+                <i class="{{ link.icon }}" aria-hidden="true"></i>
+              {% endif %}
+            </a>
+          {% endif %}
+        {% endfor %}
+      </div>
+    {% endif %}
+
+    {% assign has_detail_links = false %}
+    {% for link in profile_links.academic_links %}
+      {% if link.enabled != false and link.url and link.url != '' %}
+        {% assign has_detail_links = true %}
+      {% endif %}
+    {% endfor %}
+    {% for link in profile_links.cv_links %}
+      {% if link.enabled != false %}
+        {% if link.url and link.url != '' %}
+          {% assign has_detail_links = true %}
+        {% endif %}
+        {% for variant in link.variants %}
+          {% if variant.enabled != false and variant.url and variant.url != '' %}
+            {% assign has_detail_links = true %}
+          {% endif %}
+        {% endfor %}
+      {% endif %}
+    {% endfor %}
+
+    {% if has_detail_links %}
+      <div class="profile-link-list">
+        {% for link in profile_links.academic_links %}
+          {% if link.enabled != false and link.url and link.url != '' %}
+            {% assign is_external = false %}
+            {% if link.url contains '://' %}
+              {% assign is_external = true %}
+            {% endif %}
+            <a
+              class="profile-link-row"
+              href="{% if is_external or link.url contains 'mailto:' %}{{ link.url }}{% else %}{{ link.url | relative_url }}{% endif %}"
+              aria-label="{{ link.label }}"
+              {% if is_external %}
+                target="_blank" rel="external nofollow noopener"
+              {% endif %}
+            >
+              <span class="profile-link-label">
+                <i class="{{ link.icon }}" aria-hidden="true"></i>
+                <span>{{ link.label }}</span>
+              </span>
+            </a>
+          {% endif %}
+        {% endfor %}
+
+        {% for link in profile_links.cv_links %}
+          {% if link.enabled != false %}
+            {% assign has_visible_variant = false %}
+            {% for variant in link.variants %}
+              {% if variant.enabled != false and variant.url and variant.url != '' %}
+                {% assign has_visible_variant = true %}
+              {% endif %}
+            {% endfor %}
+            {% if has_visible_variant %}
+              <div class="profile-link-row profile-link-row-static" aria-label="{{ link.label }}">
+                <span class="profile-link-label">
+                  <i class="{{ link.icon }}" aria-hidden="true"></i>
+                  {% if link.show_label != false %}
+                    <span>{{ link.label }}</span>
+                  {% endif %}
+                </span>
+                <span class="profile-link-variants">
+                  {% for variant in link.variants %}
+                    {% if variant.enabled != false and variant.url and variant.url != '' %}
+                      {% assign is_external = false %}
+                      {% if variant.url contains '://' %}
+                        {% assign is_external = true %}
+                      {% endif %}
+                      <a
+                        class="profile-link-pill"
+                        href="{% if is_external or variant.url contains 'mailto:' %}{{ variant.url }}{% else %}{{ variant.url | relative_url }}{% endif %}"
+                        aria-label="{{ link.label }} {{ variant.label }}"
+                        {% if is_external %}
+                          target="_blank" rel="external nofollow noopener"
+                        {% endif %}
+                      >
+                        {{ variant.label }}
+                      </a>
+                    {% endif %}
+                  {% endfor %}
+                </span>
+              </div>
+            {% elsif link.url and link.url != '' %}
+              {% assign is_external = false %}
+              {% if link.url contains '://' %}
+                {% assign is_external = true %}
+              {% endif %}
+              <a
+                class="profile-link-row"
+                href="{% if is_external or link.url contains 'mailto:' %}{{ link.url }}{% else %}{{ link.url | relative_url }}{% endif %}"
+                aria-label="{{ link.label }}"
+                {% if is_external %}
+                  target="_blank" rel="external nofollow noopener"
+                {% endif %}
+              >
+                <span class="profile-link-label">
+                  <i class="{{ link.icon }}" aria-hidden="true"></i>
+                  {% if link.show_label != false %}
+                    <span>{{ link.label }}</span>
+                  {% endif %}
+                </span>
+              </a>
+            {% endif %}
+          {% endif %}
+        {% endfor %}
+      </div>
+    {% endif %}
+  </nav>
+{% endif %}

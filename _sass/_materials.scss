@@ -1,0 +1,223 @@
+/*******************************************************************************
+ * Materials page
+ ******************************************************************************/
+
+.materials-page {
+  margin-top: 1.25rem;
+
+  .materials-section {
+    margin-bottom: 2.35rem;
+
+    h2 {
+      display: flex;
+      align-items: center;
+      gap: 0.85rem;
+      margin-top: 2.2rem;
+      margin-bottom: 1rem;
+      font-size: 1.45rem;
+      line-height: 1.2;
+
+      &::after {
+        content: "";
+        flex: 1 1 auto;
+        height: 1px;
+        min-width: 2.5rem;
+        background: linear-gradient(90deg, var(--global-divider-color), transparent);
+      }
+    }
+  }
+
+  .materials-list {
+    display: flex;
+    flex-direction: column;
+    gap: 0.9rem;
+  }
+
+  .material-entry {
+    display: grid;
+    grid-template-columns: 8.6rem minmax(0, 1fr);
+    gap: 1.2rem;
+    padding: 0.95rem 0;
+  }
+
+  .material-entry + .material-entry {
+    border-top: 1px solid var(--global-divider-color);
+  }
+
+  .material-meta {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.45rem;
+  }
+
+  .material-date {
+    display: inline-flex;
+    align-items: center;
+    width: fit-content;
+    white-space: nowrap;
+  }
+
+  .material-date {
+    color: var(--global-text-color-light);
+    font-size: 0.86rem;
+    font-weight: 600;
+  }
+
+  .material-preview {
+    width: 7.8rem;
+    max-width: 100%;
+    aspect-ratio: var(--material-preview-ratio, 16 / 9);
+    overflow: hidden;
+    background:
+      linear-gradient(180deg, color-mix(in srgb, var(--global-card-bg-color) 92%, white), var(--global-card-bg-color));
+    border: 1px solid var(--global-divider-color);
+    border-radius: 6px;
+    box-shadow: 0 0.45rem 1.25rem color-mix(in srgb, var(--global-text-color) 8%, transparent);
+
+    img,
+    object,
+    iframe {
+      display: block;
+      width: 100%;
+      height: 100%;
+      border: 0;
+    }
+
+    img {
+      object-fit: contain;
+      background: white;
+    }
+
+    object,
+    iframe {
+      pointer-events: none;
+    }
+  }
+
+  .material-preview-fallback {
+    display: grid;
+    width: 100%;
+    height: 100%;
+    place-items: center;
+    color: var(--global-theme-color);
+    font-size: 0.8rem;
+    font-weight: 800;
+    line-height: 1;
+
+    i {
+      font-size: 1.25rem;
+    }
+  }
+
+  .material-header {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) auto;
+    gap: 0.65rem 1rem;
+    align-items: start;
+  }
+
+  h3 {
+    margin: 0;
+    color: var(--global-text-color);
+    font-size: 1.06rem;
+    font-weight: 700;
+    line-height: 1.25;
+  }
+
+  .material-context {
+    margin-top: 0.15rem;
+    color: var(--global-text-color-light);
+    font-size: 0.9rem;
+    line-height: 1.35;
+  }
+
+  p {
+    margin: 0.45rem 0 0;
+    color: var(--global-text-color);
+    font-size: 0.94rem;
+    line-height: 1.48;
+  }
+
+  .material-action {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.35rem;
+    min-height: 1.85rem;
+    padding: 0.18rem 0.65rem;
+    color: var(--global-text-color);
+    font-size: 0.82rem;
+    font-weight: 700;
+    line-height: 1.1;
+    text-decoration: none;
+    border: 1px solid var(--global-divider-color);
+    border-radius: 999px;
+
+    &:hover {
+      color: var(--global-theme-color);
+      text-decoration: none;
+      border-color: var(--global-theme-color);
+    }
+  }
+
+  .material-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.35rem;
+    margin-top: 0.55rem;
+
+    span {
+      display: inline-flex;
+      align-items: center;
+      min-height: 1.35rem;
+      padding: 0.1rem 0.42rem;
+      color: var(--global-text-color-light);
+      font-size: 0.75rem;
+      line-height: 1.1;
+      background: var(--global-card-bg-color);
+      border: 1px solid var(--global-divider-color);
+      border-radius: 999px;
+    }
+  }
+}
+
+@media (max-width: 575.98px) {
+  .materials-page {
+    .materials-section {
+      h2 {
+        gap: 0.65rem;
+        margin-top: 2rem;
+        font-size: 1.35rem;
+
+        &::after {
+          min-width: 1.5rem;
+        }
+      }
+    }
+
+    .material-entry {
+      grid-template-columns: 1fr;
+      gap: 0.65rem;
+    }
+
+    .material-meta {
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 0.5rem;
+    }
+
+    .material-preview {
+      width: 8.8rem;
+    }
+
+    .material-header {
+      grid-template-columns: 1fr;
+      gap: 0.6rem;
+    }
+
+    .material-action {
+      width: fit-content;
+    }
+  }
+}

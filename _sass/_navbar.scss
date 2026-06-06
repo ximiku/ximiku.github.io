@@ -77,6 +77,48 @@
     }
   }
 
+  .navbar-nav .nav-item.hanabio-nav-item {
+    display: flex;
+    align-items: center;
+    margin-left: 0.35rem;
+  }
+
+  .navbar-nav .nav-item.hanabio-nav-item > .nav-link.hanabio-nav-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.35rem;
+    min-height: 1.85rem;
+    padding: 0.18rem 0.58rem;
+    color: var(--global-theme-color);
+    font-size: 0.92rem;
+    font-weight: 700;
+    line-height: 1.1;
+    white-space: nowrap;
+    background:
+      linear-gradient(135deg, color-mix(in srgb, var(--global-theme-color) 12%, transparent), transparent 72%),
+      var(--global-bg-color);
+    border: 1px solid color-mix(in srgb, var(--global-theme-color) 35%, var(--global-divider-color));
+    border-radius: 999px;
+    box-shadow: 0 0.35rem 1rem color-mix(in srgb, var(--global-theme-color) 10%, transparent);
+
+    i {
+      font-size: 0.78rem;
+    }
+
+    .hanabio-external-icon {
+      font-size: 0.62rem;
+      opacity: 0.72;
+      transform: translateY(-1px);
+    }
+
+    &:hover {
+      color: var(--global-hover-text-color);
+      background: var(--global-theme-color);
+      border-color: var(--global-theme-color);
+      box-shadow: 0 0.5rem 1.25rem color-mix(in srgb, var(--global-theme-color) 18%, transparent);
+    }
+  }
+
   .navbar-brand.social {
     padding-bottom: 0;
     padding-top: 0;
@@ -175,6 +217,20 @@
 @media (min-width: 576px) {
   #light-toggle {
     transform: translateY(4px);
+  }
+}
+
+@media (max-width: 575.98px) {
+  .navbar.navbar-light {
+    .navbar-nav .nav-item.hanabio-nav-item {
+      justify-content: flex-end;
+      margin-top: 0.35rem;
+      margin-left: 0;
+    }
+
+    .navbar-nav .nav-item.hanabio-nav-item > .nav-link.hanabio-nav-link {
+      width: fit-content;
+    }
   }
 }
 

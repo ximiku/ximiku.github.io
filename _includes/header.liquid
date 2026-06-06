@@ -4,21 +4,7 @@
     <div class="container">
       {% if page.permalink != '/' %}
         <a class="navbar-brand title font-weight-lighter" href="{{ site.baseurl }}/">
-          {% if site.title == 'blank' %}
-            {% if site.first_name %}
-              <span class="font-weight-bold">
-                {{- site.first_name -}}
-              </span>
-            {% endif %}
-            {% if site.middle_name %}
-              {{- site.middle_name -}}
-            {% endif %}
-            {% if site.last_name %}
-              {{- site.last_name -}}
-            {% endif %}
-          {% else %}
-            {{- site.title -}}
-          {% endif %}
+          Jiaxi Liu's Home Page
         </a>
       {% elsif site.enable_navbar_social %}
         <!-- Social Icons -->
@@ -49,7 +35,7 @@
           <!-- About -->
           <li class="nav-item {% if page.permalink == '/' %}active{% endif %}">
             <a class="nav-link" href="{{ '/' | relative_url }}">
-              {{- about_title }}
+              {{- about_title | capitalize }}
               {% if page.permalink == '/' %}
                 <span class="sr-only">(current)</span>
               {% endif %}
@@ -108,7 +94,7 @@
                     {%- assign url = p.url -%}
                   {%- endif %}
                   <a class="nav-link" href="{{ url | relative_url }}">
-                    {{- p.title }}
+                    {{- p.nav_title | default: p.title | capitalize }}
                     {% if page.url contains p.url %}
                       <span class="sr-only">(current)</span>
                     {% endif %}
@@ -117,11 +103,24 @@
               {% endif %}
             {% endif %}
           {% endfor %}
+          <li class="nav-item hanabio-nav-item">
+            <a
+              class="nav-link hanabio-nav-link"
+              href="https://ximiku.github.io/HanaBio-Archive/"
+              target="_blank"
+              rel="external nofollow noopener"
+              aria-label="Open HanaBio Archive external site"
+            >
+              <i class="fa-solid fa-dna" aria-hidden="true"></i>
+              <span>HanaBio Archive</span>
+              <i class="fa-solid fa-arrow-up-right-from-square hanabio-external-icon" aria-hidden="true"></i>
+            </a>
+          </li>
           {% if site.search_enabled %}
             <!-- Search -->
             <li class="nav-item">
-              <button id="search-toggle" title="Search" onclick="openSearchModal()">
-                <span class="nav-link">ctrl k <i class="fa-solid fa-magnifying-glass"></i></span>
+              <button id="search-toggle" title="Search" aria-label="Search" onclick="openSearchModal()">
+                <span class="nav-link search-nav-icon"><i class="fa-solid fa-magnifying-glass" aria-hidden="true"></i></span>
               </button>
             </li>
           {% endif %}

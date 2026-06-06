@@ -1,12 +1,12 @@
-# this file contains the social media links and usernames of the author
-# the socials will be displayed in the order they are defined here
-# for more information, please refer to the documentation of jekyll-socials plugin: https://github.com/george-gca/jekyll-socials
-cv_pdf: /assets/pdf/jiaxi-liu-cv.pdf # path to your CV PDF file
-email: jiaxi_liu@stu.pku.edu.cn # your email address
-rss_icon: true # comment this line to hide the RSS icon
-scholar_userid: # add your Google Scholar ID when available
-# wechat_qr: # filename of your wechat qr-code saved as an image (e.g., wechat-qr.png if saved to assets/img/wechat-qr.png)
-# whatsapp_number: # your WhatsApp number (full phone number in international format. Omit any zeroes, brackets, or dashes when adding the phone number in international format.)
+# 这里保留 jekyll-socials 可读取的联系方式配置。
+# 头像下方的新社交模块请修改 _data/profile_links.yml。
+# 更多可用字段见 jekyll-socials 文档：https://github.com/george-gca/jekyll-socials
+cv_pdf: /assets/pdf/jiaxi-liu-cv.pdf # CV PDF 文件路径
+email: jiaxi_liu@stu.pku.edu.cn # 邮箱地址
+rss_icon: true # 如不想显示 RSS 图标，可删除或注释这一行
+scholar_userid: 1lMSa7AAAAAJ # Google Scholar ID
+# wechat_qr: # 微信二维码图片文件名；图片放在 assets/img/ 下，例如 wechat-qr.png
+# whatsapp_number: # WhatsApp 国际格式手机号；不要包含 0、括号或横线
 # github_username: ximiku
 # linkedin_username:
 # orcid_id:

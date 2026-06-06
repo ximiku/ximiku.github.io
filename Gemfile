@@ -2,19 +2,16 @@ source 'https://rubygems.org'
 
 gem 'jekyll'
 
-# Core plugins that directly affect site building
+# 直接参与站点构建的核心插件
 group :jekyll_plugins do
     gem 'jekyll-3rd-party-libraries'
-    gem 'jekyll-archives-v2'
     gem 'jekyll-cache-bust'
     gem 'jekyll-email-protect'
     gem 'jekyll-feed'
-    gem 'jekyll-get-json'
     gem 'jekyll-imagemagick'
     gem 'jekyll-jupyter-notebook'
     gem 'jekyll-link-attributes'
     gem 'jekyll-minifier'
-    gem 'jekyll-paginate-v2'
     gem 'jekyll-regex-replace'
     gem 'jekyll-scholar'
     gem 'jekyll-sitemap'
@@ -25,17 +22,14 @@ group :jekyll_plugins do
     gem 'jekyll-twitter-plugin'
     gem 'jemoji'
 
-    gem 'classifier-reborn'  # used for content categorization during the build
 end
 
-# Gems for development or external data fetching (outside :jekyll_plugins)
+# 开发或外部数据抓取所需的依赖，不直接作为 Jekyll 插件加载
 group :other_plugins do
     gem 'css_parser'
-    gem 'feedjira'
-    gem 'httparty'
-    gem 'observer'       # used by jekyll-scholar
-    gem 'ostruct'        # used by jekyll-twitter-plugin
-    # gem 'terser'         # used by jekyll-terser
-    # gem 'unicode_utils' -- should be already installed by jekyll
-    # gem 'webrick' -- should be already installed by jekyll
+    gem 'observer'       # jekyll-scholar 需要
+    gem 'ostruct'        # jekyll-twitter-plugin 需要
+    # gem 'terser'         # jekyll-terser 需要
+    # gem 'unicode_utils' -- 通常已随 jekyll 安装
+    # gem 'webrick' -- 通常已随 jekyll 安装
 end

@@ -1,38 +1,34 @@
 ---
-# Only the main Sass file needs front matter (the dashes are enough)
+# 只有主 Sass 文件需要 front matter；保留这两行横线即可
 ---
 @charset "utf-8";
 
-/* Built-in Sass modules you’ll likely use across partials */
+/* 内置 Sass 模块 */
 @use "sass:math";
 @use "sass:string";
 
-/* Configure your design tokens BEFORE loading any of your partials.
-   Make sure `_sass/_variables.scss` declares `$max-content-width: 72rem !default;` */
+/* 先配置设计变量，再加载其他 partial。
+   `_sass/_variables.scss` 中应声明 `$max-content-width: 72rem !default;` */
 @use "variables" with (
   $max-content-width: {{ site.max_width | default:  "930px" }}
 );
 
-/* Your project partials — convert these files to `@use "variables";`
-   (or `@use "variables" as *;`) inside each file and qualify variables if needed. */
+/* 项目 partial；如需读取变量，可在对应文件中使用 `@use "variables";` */
 @use "themes";
 @use "layout";
 
-// Core styles organized by usage
+// 按用途组织的核心样式
 @use "typography";
 @use "navbar";
 @use "footer";
 @use "blog";
 @use "publications";
+@use "materials";
 @use "components";
 @use "utilities";
 
-// Other specialized styles
-@use "distill";
-@use "cv";
+// 其他专用样式
 @use "tabs";
-@use "teachings";
-@use "typograms";
 @use "font-awesome/fontawesome";
 @use "font-awesome/brands";
 @use "font-awesome/solid";

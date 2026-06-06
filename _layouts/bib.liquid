@@ -2,56 +2,48 @@
 ---
 <div class="row">
   {% if site.enable_publication_thumbnails %}
-    <div class="col col-sm-2 abbr">
-      {%- if entry.abbr -%}
-        {%- if site.data.venues[entry.abbr] -%}
-          {% assign venue_style = null %}
-          {% if site.data.venues[entry.abbr].color != blank %}
-            {% assign venue_style = site.data.venues[entry.abbr].color | prepend: 'style="background-color:' | append: '"' %}
-          {%- endif -%}
-          <abbr
-            class="badge rounded w-100"
-            {% if venue_style %}
-              {{ venue_style }}
-            {% endif -%}
-          >
-            {% if site.data.venues[entry.abbr].url %}
-              <a href="{{ site.data.venues[entry.abbr].url }}">{{ entry.abbr }}</a>
-            {% else %}
-              <div>{{- entry.abbr -}}</div>
-            {% endif %}
-          </abbr>
-        {% else %}
-          <abbr class="badge rounded w-100">{{ entry.abbr }}</abbr>
-        {% endif %}
-      {% endif %}
-      {% if entry.preview %}
-        {% if entry.preview contains '://' %}
-          <img class="preview z-depth-1 rounded" src="{{ entry.preview }}">
-        {% else %}
-          {% assign entry_path = entry.preview | prepend: '/assets/img/publication_preview/' %}
-          {%
-            include figure.liquid
-            loading="eager"
-            path=entry_path
-            sizes = "200px"
-            class="preview z-depth-1 rounded"
-            zoomable=true
-            avoid_scaling=true
-            alt=entry.preview
-          %}
-        {% endif %}
+    <div class="col publication-preview-col">
+      {% assign entry_preview = entry.preview | default: 'default.svg' %}
+      {% if entry_preview contains '://' %}
+        <img class="preview z-depth-1 rounded" src="{{ entry_preview }}" alt="{{ entry.title }}">
+      {% else %}
+        {% assign entry_path = entry_preview | prepend: '/assets/img/publication_preview/' %}
+        {%
+          include figure.liquid
+          loading="eager"
+          path=entry_path
+          sizes = "240px"
+          class="preview z-depth-1 rounded"
+          zoomable=true
+          avoid_scaling=true
+          alt=entry.title
+        %}
       {% endif %}
     </div>
   {% endif %}
 
   <!-- Entry bib key -->
-  <div id="{{ entry.key }}" class="{% if site.enable_publication_thumbnails %}col-sm-8{% else %}col-sm-10{% endif %}">
+  <div id="{{ entry.key }}" class="{% if site.enable_publication_thumbnails %}col publication-content-col{% else %}col-sm-12{% endif %}">
     <!-- Title -->
-    <div class="title">{{ entry.title }}</div>
+    <div class="title">
+      {% if entry.url %}
+        <a
+          href="{{ entry.url }}"
+          {% if entry.url contains '://' %}
+            target="_blank" rel="external nofollow noopener"
+          {% endif %}
+        >
+          {{- entry.title -}}
+        </a>
+      {% else %}
+        {{ entry.title }}
+      {% endif %}
+    </div>
     <!-- Author -->
     <div class="author">
       {% assign author_array_size = entry.author_array | size %}
+      {% assign equal_contribution_authors = entry.equal_contribution | default: '' | downcase | remove_accents %}
+      {% assign corresponding_authors = entry.corresponding_author | default: '' | downcase | remove_accents %}
 
       {% assign author_array_limit = author_array_size %}
       {% if site.max_author_limit and author_array_size > site.max_author_limit %}
@@ -62,6 +54,16 @@
         {% assign author_is_self = false %}
         {%- assign author_last_name = author.last | regex_replace: '[*∗†‡§¶‖&^]', '' -%}
         {%- assign author_last_html = author.last | regex_replace: '([*∗†‡§¶‖&^]+)', '<sup>\1</sup>' -%}
+        {% capture author_full_name %}{{ author.first }} {{ author_last_name }}{% endcapture %}
+        {% assign author_full_name = author_full_name | strip %}
+        {% assign author_full_name_key = author_full_name | downcase | remove_accents %}
+        {% assign author_markers = '' %}
+        {% if equal_contribution_authors contains author_full_name_key %}
+          {% capture author_markers %}{{ author_markers }}<sup class="author-note-marker" aria-label="equal contribution">*</sup>{% endcapture %}
+        {% endif %}
+        {% if corresponding_authors contains author_full_name_key %}
+          {% capture author_markers %}{{ author_markers }}<sup class="author-note-marker" aria-label="corresponding author">†</sup>{% endcapture %}
+        {% endif %}
         {% if site.scholar.last_name contains author_last_name %}
           {% if site.scholar.first_name contains author.first %}
             {% assign author_is_self = true %}
@@ -78,28 +80,30 @@
           {% endfor %}
         {%- endif -%}
 
-        {%- if forloop.length > 1 -%}
-          {% if forloop.first == false -%}
-            {%- if forloop.length > 2 %}, {% elsif forloop.length == 2 %}  {% endif %}
-          {%- endif %}
-          {%- if forloop.last and author_array_limit == author_array_size %}and {% endif -%}
-        {% endif %}
         {%- if author_is_self -%}
-          <em>
-            {{- author.first }}
-            {{ author_last_html -}}
-          </em>
+          <strong><u>{{- author.first }} {{ author_last_html -}}</u></strong>{{- author_markers -}}
         {%- else -%}
           {%- if coauthor_url -%}
             <a href="{{ coauthor_url }}">
               {{- author.first }}
               {{ author_last_html -}}
-            </a>
+            </a>{{- author_markers -}}
           {%- else -%}
             {{- author.first }}
-            {{ author_last_html -}}
+            {{ author_last_html -}}{{- author_markers -}}
           {% endif %}
         {%- endif -%}
+        {%- unless forloop.last -%}
+          {%- if forloop.rindex == 2 and author_array_limit == author_array_size -%}
+            {%- if forloop.length > 2 -%}
+              {{- ', and ' -}}
+            {%- else -%}
+              {{- ' and ' -}}
+            {%- endif -%}
+          {%- else -%}
+            {{- ', ' -}}
+          {%- endif -%}
+        {%- endunless -%}
       {% endfor %}
       {%- assign more_authors = author_array_size | minus: author_array_limit -%}
 
@@ -147,7 +151,6 @@
         </i>
       {% endif %}
     </div>
-
     <!-- Journal/Book title and date -->
     {% assign proceedings = 'inproceedings,incollection' | split: ',' %}
     {% assign thesis = 'thesis,mastersthesis,phdthesis' | split: ',' %}
@@ -172,7 +175,7 @@
       {% capture entrytype %}{{ entrytype }}{{ ", " }}{{ entry.location }}{% endcapture %}
     {% endif -%}
     {% if entry.additional_info %}
-      {% capture entrytype %}{{ entrytype }}{{ entry.additional_info | markdownify | remove: '<p>' | remove: '</p>' }}{% endcapture %}
+      {% capture entrytype %}{{ entrytype }}{{ entry.additional_info | strip | markdownify | remove: '<p>' | remove: '</p>' | strip }}{% endcapture %}
     {% endif %}
     {% capture hook_exists %}{% file_exists _includes/hook/bib.liquid %}{% endcapture %}
     {% if hook_exists == 'true' %}
@@ -180,8 +183,28 @@
     {% endif %}
     {% assign entrytype_text = entrytype | strip_html | strip %}
     {% capture periodical %}{{ entrytype }}{% if entrytype_text != "" and entryyear != "" %}, {% endif %}{{ entrymonth }}{{ entryyear }}{% endcapture %}
+    {% assign has_venue_metrics = false %}
+    {% if entry.impact_factor or entry.jcr or entry.ccf %}
+      {% assign has_venue_metrics = true %}
+    {% endif %}
     <div class="periodical">
       {{ periodical | strip }}
+      {% if has_venue_metrics %}
+        <span class="venue-metrics" aria-label="Venue metrics">
+          {% if entry.impact_factor %}
+            <span class="venue-metric venue-metric-if">
+              {%- if entry.impact_factor_year -%}{{ entry.impact_factor_year }} {% endif -%}
+              IF {{ entry.impact_factor -}}
+            </span>
+          {% endif %}
+          {% if entry.jcr %}
+            <span class="venue-metric venue-metric-jcr">JCR {{ entry.jcr }}</span>
+          {% endif %}
+          {% if entry.ccf %}
+            <span class="venue-metric venue-metric-ccf">CCF {{ entry.ccf }}</span>
+          {% endif %}
+        </span>
+      {% endif %}
     </div>
     <div class="periodical">
       {{ entry.note | strip }}
@@ -194,10 +217,22 @@
           {%- if entry.award_name %}{{ entry.award_name }}{% else %}Awarded{% endif -%}
         </a>
       {% endif %}
+      {% if entry.url %}
+        <a
+          href="{{ entry.url }}"
+          class="btn btn-sm z-depth-0"
+          role="button"
+          {% if entry.url contains '://' %}
+            target="_blank" rel="external nofollow noopener"
+          {% endif %}
+        >
+          Link
+        </a>
+      {% endif %}
       {% if entry.abstract %}
         <a class="abstract btn btn-sm z-depth-0" role="button">Abs</a>
       {% endif %}
-      {% if entry.doi %}
+      {% if entry.doi and entry.doi_button != 'false' %}
         <a href="https://doi.org/{{ entry.doi }}" class="btn btn-sm z-depth-0" role="button">DOI</a>
       {% endif %}
       {% if entry.arxiv %}
@@ -222,6 +257,11 @@
         {% else %}
           <a href="{{ entry.pdf | prepend: '/assets/pdf/' | relative_url }}" class="btn btn-sm z-depth-0" role="button">PDF</a>
         {% endif %}
+      {% endif %}
+      {% if entry.pubmed %}
+        <a href="{{ entry.pubmed }}" class="btn btn-sm z-depth-0" role="button">PubMed</a>
+      {% elsif entry.pmid %}
+        <a href="https://pubmed.ncbi.nlm.nih.gov/{{ entry.pmid }}/" class="btn btn-sm z-depth-0" role="button">PubMed</a>
       {% endif %}
       {% if entry.supp %}
         {% if entry.supp contains '://' %}
@@ -323,7 +363,7 @@
               role="button"
             >
               {% assign citation_count = 0 %}
-              {% assign scholar_id_key = site.scholar_userid | append: ':' | append: entry.google_scholar_id %}
+              {% assign scholar_id_key = site.data.socials.scholar_userid | append: ':' | append: entry.google_scholar_id %}
               {% assign publication_key = entry.google_scholar_id %}
 
               {% if site.data.citations.papers[scholar_id_key] %}
@@ -341,7 +381,7 @@
               {% endif %}
 
               <img
-                src="https://img.shields.io/badge/scholar-{{ citation_count }}-4285F4?logo=googlescholar&labelColor=beige"
+                src="https://img.shields.io/badge/citations-{{ citation_count }}-4285F4?logo=googlescholar&labelColor=beige"
                 alt="{{ citation_count }} Google Scholar citations"
               >
             </a>

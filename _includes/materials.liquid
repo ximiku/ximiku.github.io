@@ -1,0 +1,103 @@
+{% assign material_sections = 'talk_slides|Talk Slides,course_report|Course Reports,project_report|Project Reports' | split: ',' %}
+
+<div class="materials-page">
+  {% for section in material_sections %}
+    {% assign section_parts = section | split: '|' %}
+    {% assign section_type = section_parts[0] %}
+    {% assign section_title = section_parts[1] %}
+    {% assign section_count = 0 %}
+
+    {% for item in site.data.materials %}
+      {% if item.enabled != false and item.type == section_type %}
+        {% assign section_count = section_count | plus: 1 %}
+      {% endif %}
+    {% endfor %}
+
+    {% if section_count > 0 %}
+      <section class="materials-section">
+        <h2>{{ section_title }}</h2>
+        <div class="materials-list">
+          {% for item in site.data.materials %}
+            {% if item.enabled != false and item.type == section_type %}
+              {% assign item_pdf_url = nil %}
+              {% if item.pdf %}
+                {% if item.pdf contains '://' %}
+                  {% assign item_pdf_url = item.pdf %}
+                {% else %}
+                  {% assign item_pdf_url = item.pdf | relative_url %}
+                {% endif %}
+              {% endif %}
+              {% assign item_preview_url = nil %}
+              {% if item.preview %}
+                {% if item.preview contains '://' %}
+                  {% assign item_preview_url = item.preview %}
+                {% else %}
+                  {% assign item_preview_url = item.preview | relative_url %}
+                {% endif %}
+              {% endif %}
+              <article class="material-entry">
+                <div class="material-meta">
+                  {% if item.date %}
+                    <span class="material-date">{{ item.date }}</span>
+                  {% endif %}
+                  {% if item_preview_url or item_pdf_url %}
+                    <div
+                      class="material-preview{% if item_preview_url %} material-preview-image{% endif %}"
+                      {% if item.preview_ratio %}
+                        style="--material-preview-ratio: {{ item.preview_ratio }};"
+                      {% endif %}
+                      aria-label="PDF preview"
+                    >
+                      {% if item_preview_url %}
+                        <img src="{{ item_preview_url }}" alt="{{ item.title }} PDF preview" loading="lazy">
+                      {% else %}
+                        <object data="{{ item_pdf_url }}#page=1&toolbar=0&navpanes=0&scrollbar=0&view=Fit&zoom=page-fit" type="application/pdf">
+                          <span class="material-preview-fallback">
+                            <i class="fa-solid fa-file-pdf" aria-hidden="true"></i>
+                            <span>PDF</span>
+                          </span>
+                        </object>
+                      {% endif %}
+                    </div>
+                  {% endif %}
+                </div>
+                <div class="material-body">
+                  <div class="material-header">
+                    <div>
+                      <h3>{{ item.title }}</h3>
+                      {% if item.context %}
+                        <div class="material-context">{{ item.context }}</div>
+                      {% endif %}
+                    </div>
+                    {% if item_pdf_url %}
+                      <a
+                        class="material-action"
+                        href="{{ item_pdf_url }}"
+                        {% if item.pdf contains '://' %}
+                          target="_blank" rel="external nofollow noopener"
+                        {% endif %}
+                      >
+                        <i class="fa-solid fa-file-pdf" aria-hidden="true"></i>
+                        PDF
+                      </a>
+                    {% endif %}
+                  </div>
+                  {% if item.description %}
+                    <p>{{ item.description }}</p>
+                  {% endif %}
+                  {% if item.tags %}
+                    <div class="material-tags" aria-label="Tags">
+                      {% for tag in item.tags %}
+                        <span>{{ tag }}</span>
+                      {% endfor %}
+                    </div>
+                  {% endif %}
+                </div>
+              </article>
+            {% endif %}
+          {% endfor %}
+        </div>
+      </section>
+    {% endif %}
+  {% endfor %}
+</div>

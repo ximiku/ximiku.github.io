@@ -1,0 +1,12 @@
+- title: A time-resolved, multi-symbol molecular recorder via sequential genome editing
+  type: talk_slides
+  date: Jun 2026
+  context: UHPB Journal Club
+  description: DNA Typewriter records the temporal order of cellular events by sequentially writing event barcodes into a genomic DNA tape through prime editing. This enables cells to store multi-symbol histories in a stable, heritable, and single-cell-readable form.
+  pdf: /assets/pdf/materials/260530_UHPB_JC_DNA-Typewriter.pdf
+  preview: /assets/img/materials/260530-uhpb-jc-dna-typewriter-preview.png
+  preview_ratio: 16 / 9
+  tags:
+    - DNA recording
+    - Genome editing
+  enabled: true

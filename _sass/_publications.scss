@@ -39,39 +39,55 @@
     li {
       margin-bottom: 1rem;
 
-      .preview {
-        display: inline-block;
-      }
-
-      .abbr {
+      .publication-preview-col {
+        flex: 0 0 14rem;
+        max-width: 14rem;
         margin-bottom: 0.5rem;
 
-        abbr {
-          display: inline-block;
-          background-color: var(--global-theme-color);
-          margin-bottom: 0.5rem;
-          color: var(--global-card-bg-color) !important;
-
-          a {
-            color: white;
-
-            &:hover {
-              text-decoration: none;
-            }
-          }
+        figure {
+          margin: 0;
+          width: 100%;
         }
 
-        .award {
-          color: var(--global-theme-color) !important;
-          border: 1px solid var(--global-theme-color);
+        .preview {
+          display: block;
+          width: 100%;
+          height: auto;
+          object-fit: contain;
+          background: var(--global-card-bg-color);
+          border: 1px solid var(--global-divider-color);
+          box-shadow: 0 0.35rem 1rem rgba(0, 0, 0, 0.05);
         }
+      }
+
+      .publication-content-col {
+        min-width: 0;
       }
 
       .title {
         font-weight: bolder;
+
+        a {
+          color: inherit;
+          text-decoration: none;
+
+          &:hover {
+            color: var(--global-theme-color);
+            text-decoration: none;
+          }
+        }
       }
 
       .author {
+        .author-note-marker {
+          color: var(--global-theme-color);
+          font-size: 0.75em;
+          font-weight: 700;
+          line-height: 0;
+          margin-left: 0.08rem;
+          text-decoration: none;
+        }
+
         a {
           border-bottom: 1px dashed var(--global-theme-color);
 
@@ -98,6 +114,39 @@
         }
       }
 
+      .periodical {
+        .venue-metrics {
+          display: inline-flex;
+          flex-wrap: wrap;
+          gap: 0.35rem;
+          margin-left: 0.45rem;
+          vertical-align: baseline;
+        }
+
+        .venue-metric {
+          display: inline-flex;
+          align-items: center;
+          min-height: 1.28rem;
+          padding: 0.08rem 0.42rem;
+          color: var(--global-theme-color);
+          font-size: 0.76rem;
+          font-style: normal;
+          font-weight: 700;
+          line-height: 1.1;
+          white-space: nowrap;
+          background: color-mix(in srgb, var(--global-theme-color) 9%, transparent);
+          border: 1px solid color-mix(in srgb, var(--global-theme-color) 32%, var(--global-divider-color));
+          border-radius: 6px;
+        }
+
+        .venue-metric-jcr,
+        .venue-metric-ccf {
+          color: #1f7a4d;
+          background: color-mix(in srgb, #2fb36d 12%, transparent);
+          border-color: color-mix(in srgb, #2fb36d 36%, var(--global-divider-color));
+        }
+      }
+
       .links {
         a.btn {
           color: var(--global-text-color);
@@ -107,6 +156,7 @@
           padding-top: 0.25rem;
           padding-bottom: 0.25rem;
           margin-left: 0;
+          text-transform: none;
 
           &:hover {
             color: var(--global-theme-color);
@@ -173,6 +223,32 @@
         border-color: var(--global-text-color);
       }
     }
+
+    @media (max-width: 575.98px) {
+      li {
+        .publication-preview-col {
+          flex: 0 0 100%;
+          max-width: 100%;
+          margin-bottom: 0.85rem;
+
+          figure,
+          .preview {
+            width: min(100%, 18rem);
+          }
+
+          figure {
+            margin-right: auto;
+            margin-left: auto;
+          }
+        }
+
+        .publication-content-col {
+          flex: 0 0 100%;
+          max-width: 100%;
+        }
+      }
+    }
+
     div.award.hidden {
       border: dashed 1px var(--global-bg-color);
     }
