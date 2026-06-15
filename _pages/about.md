@@ -16,10 +16,10 @@ profile_links: true
 
 <div class="about-intro">
   <p>
-    I am an undergraduate student in <strong>Bioinformatics</strong> at the
+    I am an undergraduate student majoring in <strong>Bioinformatics</strong> at the
     <a href="https://www.bio.pku.edu.cn/en/index/index.html" target="_blank" rel="external nofollow noopener">School of Life Sciences</a>,
     <a href="https://english.pku.edu.cn" target="_blank" rel="external nofollow noopener">Peking University</a>,
-    Beijing, P.R. China. My interests are centered on the interface of
+    Beijing, P.R. China. My interests lie at the interface of
     <strong>biotechnology and AI for Science</strong>.
   </p>
 
@@ -30,7 +30,7 @@ profile_links: true
     I also work on <strong>B-cell immunity</strong> at
     <a href="https://biopic.pku.edu.cn" target="_blank" rel="external nofollow noopener">BIOPIC</a> in
     <a href="https://yunlongcaolab.com" target="_blank" rel="external nofollow noopener">Prof. Yunlong Cao</a>'s lab.
-    Previously, I contributed to <strong>cancer network genomics</strong> projects in Fenglin Liu's engineering lab.
+    Previously, I contributed to <strong>cancer network genomics</strong> projects in Fenglin Liu's lab.
   </p>
 
   <p>
@@ -80,8 +80,8 @@ profile_links: true
     <div class="research-interest-detail">Protein language models, biological foundation models, scientific LLMs, and AI systems that connect sequence, structure, function, and experiment.</div>
   </div>
   <div class="research-interest-item">
-    <div class="research-interest-title">Immunology, genomics, and cellular systems</div>
-    <div class="research-interest-detail">B-cell immunity, germinal-center reactions, cancer genomics, and multi-omics interpretation of complex biological states.</div>
+    <div class="research-interest-title">Biological applications: genomics and cellular systems</div>
+    <div class="research-interest-detail">Applications in cancer genomics, immune and cellular systems, and multi-omics interpretation.</div>
   </div>
   <div class="research-interest-item">
     <div class="research-interest-title">Efficient AI systems for scientific computing</div>
@@ -208,7 +208,7 @@ profile_links: true
     <div class="teaching-mark">TA</div>
     <div class="teaching-body">
       <div class="teaching-course">Bioinformatics Laboratory</div>
-      <div class="teaching-role">Teaching Assistant</div>
+      <div class="teaching-role">Teaching Assistant; School of Life Sciences, Peking University</div>
     </div>
     <div class="teaching-date">Mar 2026 - Jun 2026</div>
   </div>

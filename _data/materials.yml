@@ -1,47 +1,64 @@
-- title: A time-resolved, multi-symbol molecular recorder via sequential genome editing
+- title: "Medical World Models: Clin-JEPA, EHRWorld, and CLARITY"
   type: talk_slides
   date: Jun 2026
+  context: Research Presentation
+  description: This research presentation reviews medical world models for clinical trajectory modeling. It compares Clin-JEPA, EHRWorld, and CLARITY across EHR latent rollout, long-horizon inpatient event simulation, oncology treatment decision support, evaluation results, and deployment boundaries.
+  pdf: /assets/pdf/materials/260615_medical_world_model.pdf
+  preview: /assets/img/materials/260615_medical_world_model.png
+  preview_ratio: 16 / 9
+  tags:
+    - world models
+    - Electronic health records
+    - latent space
+  enabled: true
+
+- title: A time-resolved, multi-symbol molecular recorder via sequential genome editing
+  type: talk_slides
+  date: May 2026
   context: UHPB Journal Club
-  description: DNA Typewriter records the temporal order of cellular events by sequentially writing event barcodes into a genomic DNA tape through prime editing. This enables cells to store multi-symbol histories in a stable, heritable, and single-cell-readable form.
+  description: This journal-club presentation reviews DNA Typewriter, a sequential prime-editing system for recording event order in genomic DNA. It discusses DNA tape design, barcode-order decoding, lineage reconstruction, and limitations for recording biological signals.
   pdf: /assets/pdf/materials/260530_UHPB_JC_DNA-Typewriter.pdf
   preview: /assets/img/materials/260530-uhpb-jc-dna-typewriter-preview.png
   preview_ratio: 16 / 9
   tags:
-    - DNA recording
-    - Genome editing
+    - Prime editing
+    - Molecular recording
+    - Lineage tracing
   enabled: true
 
-- title: "Gary’s Self-Safe Venom: Biochemical Mechanisms of Snake Self-Resistance"
+- title: Biochemical Mechanisms of Snake Self-Resistance to Venom
   type: talk_slides
   date: Dec 2025
-  context: Biochemistry course report
-  description: Gary the snake is resistant to his own venom. This presentation explores the biochemical mechanisms underlying this self-resistance, shedding light on how snakes can safely produce and store their venom without harming themselves.
+  context: Biochemistry Course Report
+  description: This course presentation introduces biochemical mechanisms that protect venomous snakes from their own toxins. It summarizes neurotoxic and hemotoxic venom classes, receptor-level resistance, and serum inhibitor proteins.
   pdf: /assets/pdf/materials/251226_Biochem_pre.pdf
   preview: /assets/img/materials/251226_Biochem_pre.png
   preview_ratio: 16 / 9
   tags:
-    - Structural biology
-    - receptor-ligand interaction
+    - Snake venom
+    - Toxicology
+    - Receptor physiology
   enabled: true
 
-- title: "Decoding Regeneration: Unveiling The Hidden Mechanisms in Diverse Organisms"
+- title: Regeneration Mechanisms Across Diverse Organisms
   type: talk_slides
   date: Dec 2025
   context: UHPB Journal Club
-  description: This presentation delves into the fascinating world of regeneration across various organisms, uncovering the underlying mechanisms that enable some species to regenerate lost tissues and organs. 
+  description: This journal-club presentation reviews regeneration across invertebrate, vertebrate, and mammalian systems. It summarizes model organisms, cellular sources, stem-cell and dedifferentiation mechanisms, gene regulation, patterning, and single-cell tools for studying regeneration.
   pdf: /assets/pdf/materials/251206_UHPB_JC_regeneration.pdf
   preview: /assets/img/materials/251206_UHPB_JC_regeneration.png
   preview_ratio: 16 / 9
   tags:
     - Regeneration
-    - Developmental biology
+    - Stem cells
+    - Single-cell omics
   enabled: true
 
 - title: Reduce the risk of CAR-T cell therapy with click chemistry
   type: talk_slides
   date: May 2024
-  context: course report
-  description: CAR-T cell therapy is a promising treatment for certain cancers, but it can cause severe side effects. This presentation explores how click chemistry can be used to modify CAR-T cells, potentially reducing the risks associated with this therapy and improving patient outcomes.
+  context: Course Report
+  description: This course report discusses in situ PEGylation of CAR-T cells using click chemistry as a strategy to reduce treatment-associated toxicity. It summarizes CAR-T therapy, cytokine release syndrome, neurotoxicity, pharmacokinetic evidence, in vitro and in vivo interaction data, and model extensions.
   pdf: /assets/pdf/materials/240530_Reduce the risk of CAR-T cell therapy with click chemistry.pdf
   preview: /assets/img/materials/240530_Reduce the risk of CAR-T cell therapy with click chemistry.png
   preview_ratio: 16 / 9
@@ -53,37 +70,40 @@
 - title: Targeting PP6C as an Inhibitor of PP2A for Cancer Therapy
   type: talk_slides
   date: May 2024
-  context: course report
-  description: PP2A is a tumor suppressor that is often inactivated in cancer. This presentation investigates the potential of targeting PP6C, a regulatory subunit of PP2A, as an inhibitor to restore PP2A activity and suppress tumor growth, offering a novel approach for cancer therapy.
+  context: Course Report
+  description: This course report proposes an experimental workflow to test whether PP6C-mediated inhibition of PP2A can support anticancer drug screening. It outlines background from Drosophila Hedgehog signaling, cell and mouse experiments, target validation, high-throughput screening, and delivery considerations.
   pdf: /assets/pdf/materials/240529_Targeting PP6C as an Inhibitor of PP2A.pdf
   preview: /assets/img/materials/240529_Targeting PP6C as an Inhibitor of PP2A.png
   preview_ratio: 16 / 9
   tags:
-    - cancer therapy
+    - Cancer therapy
+    - Drug screening
+    - Hedgehog signaling
   enabled: true
 
-- title: Brain on Fire —— Focus on rare neurological disorders
+- title: "Brain on Fire: Focus on Rare Neurological Disorders"
   type: talk_slides
   date: May 2024
-  context: course report
-  description: Brain on Fire is a memoir by Susannah Cahalan that chronicles her experience with a rare autoimmune neurological disorder called anti-NMDA receptor encephalitis. This presentation focuses on the clinical features, diagnosis, and treatment of this disorder, as well as the broader implications for understanding rare neurological diseases.
+  context: Course Report
+  description: This course report uses Brain on Fire as an entry point to review anti-NMDA receptor encephalitis. It summarizes clinical presentation, diagnosis, antibody sources, disease course, experimental models, hippocampal damage, treatment options, and research challenges in rare neurological disorders.
   pdf: /assets/pdf/materials/240528_Brain on Fire.pdf
   preview: /assets/img/materials/240528_Brain on Fire.png
   preview_ratio: 16 / 9
   tags:
-    - neurology
-    - autoimmune diseases
+    - Autoimmune encephalitis
+    - Neuroimmunology
+    - Rare disorders
   enabled: true
 
 - title: Modern Research on Protein Phosphorylation
   type: talk_slides
   date: Apr 2024
-  context: current topic on biochemistry
-  description: This presentation explores the latest advancements in understanding protein phosphorylation, a critical post-translational modification that regulates numerous cellular processes.
+  context: Current Topic in Biochemistry
+  description: This course presentation reviews modern approaches to studying protein phosphorylation through the Hedgehog signaling pathway. It discusses Smoothened phosphorylation, PP1 and PP2A regulation, PpV-Wdb feedback, RNAi and genetic experiments, phosphatase assays, Phos-tag SDS-PAGE, and structural mechanisms of kinase regulation.
   pdf: /assets/pdf/materials/240417_Modern Research on Protein Phosphorylation.pdf
   preview: /assets/img/materials/240417_Modern Research on Protein Phosphorylation.png
   preview_ratio: 16 / 9
   tags:
-    - biochemistry
-    - cell biology
+    - Protein phosphorylation
+    - Hedgehog signaling
   enabled: true
