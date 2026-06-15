@@ -1,6 +1,9 @@
 name: Deploy site
 
 on:
+  # Rebuild daily so publication badges can refresh citation counts from Google Scholar.
+  schedule:
+    - cron: "0 20 * * *"
   push:
     branches:
       - master

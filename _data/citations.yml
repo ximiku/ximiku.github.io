@@ -1,5 +1,5 @@
-# 可选：如启用 Google Scholar 等引用徽章，可在这里缓存论文引用数。
-# 这些数字不会自动更新；需要定期手动刷新。
+# Google Scholar 引用徽章会在 Jekyll 构建时尝试实时抓取。
+# 如果 Scholar 暂时不可用或触发反爬，这里作为本地兜底缓存。
 papers:
   u5HHmVD_uO8C:
-    citations: 49
+    citations: 56
